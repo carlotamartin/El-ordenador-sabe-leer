@@ -64,7 +64,7 @@ class Aprendizaje ():
         print(Etiquetas[70000])
 
 
-class validacion():
+class Validacion():
 
     def __init__(self, Imagenes, Etiquetas, epochs, batch_size):
         self.imagenes_aprendizaje, self.imagenes_validacion, self.etiquetas_aprendizaje, self.etiquetas_validacion = train_test_split(Imagenes, Etiquetas, test_size=0.25, random_state=42)
@@ -142,6 +142,21 @@ def main():
 
     print("Visualización de la imagen N.° 70000...")
     aprendizaje.visualizacionImagen(Imagenes, Etiquetas)
+
+    validacion = Validacion(Imagenes, Etiquetas, 12, 128)
+
+    imagenes_aprendizaje, imagenes_validacion, etiquetas_aprendizaje, etiquetas_validacion = validacion.validacion(28, 28, 26)
+
+    #Creación de la red neuronal
+    red = redNeuronal()
+    #Establecimiento de la red neuronal
+    redCNN = red.red(28, 28, 26)
+    #Compilación de la red neuronal
+    redCNN = red.compilacion(redCNN)
+    #Entrenamiento de la red neuronal
+    redCNN = red.entrenamiento(redCNN, imagenes_aprendizaje, etiquetas_aprendizaje, imagenes_validacion, etiquetas_validacion, 12, 128)
+    red.guardado(redCNN)
+    red.evaluacion(redCNN, imagenes_validacion, etiquetas_validacion)
 
 
 
