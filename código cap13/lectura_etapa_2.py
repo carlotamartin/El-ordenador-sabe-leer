@@ -78,7 +78,7 @@ while True:
                 capturaAlphabetTMP = np.zeros((400, 400), dtype=np.uint8)
 
                 # Se detecta el contorno más grande (Reverse = True)
-                cnt = sorted(contoursLettre, key=cv2.contourArea, reverse=True)[0]
+                cnt = sorted(contornosLetra, key=cv2.contourArea, reverse=True)[0]
 
                 # Se guardan las coordenadas del rectángulo de delimitación de la letra
                 xc, yc, wc, hc = cv2.boundingRect(cnt)
@@ -89,11 +89,11 @@ while True:
                     if area > 1000:
 
                         # Se dibujan los contornos de la letra para una lectura mejor (Trazo de 10 px)
-                        cv2.drawContours(captureAlphabetTMP, contornoLetra, -1, (255, 255, 255), 10)
+                        cv2.drawContours(capturaAlphabetTMP, contornoLetra, -1, (255, 255, 255), 10)
 
                         # Se captura la letra y se guardan los valores de los píxeles de la zona capturada en una tabla
                         capturaLetra = np.zeros((400, 400), dtype=np.uint8)
-                        capturaLetra = captureAlphabetTMP[yc:yc + hc, xc:xc + wc]
+                        capturaLetra = capturaAlphabetTMP[yc:yc + hc, xc:xc + wc]
 
 
                         #Se pueden capturar sombras en la zona de escritura provocando errores de

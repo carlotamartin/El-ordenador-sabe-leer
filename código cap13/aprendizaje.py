@@ -31,7 +31,7 @@ from mnist import MNIST
 
 
 #Carga de las imágenes
-emnist_data = MNIST(path='datas\\', return_type='numpy')
+emnist_data = MNIST(path='\\datas\\', return_type='numpy')
 emnist_data.select_emnist('letters')
 Imagenes, Etiquetas = emnist_data.load_training()
 
