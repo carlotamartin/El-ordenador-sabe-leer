@@ -72,7 +72,7 @@ class Pizarra ():
                 x, y, w, h = cv2.boundingRect(approx)
 
                 #Se encuadra la zona de escritura en función de los parámetros de largo y ancho de la pizarra
-                if len(approx) == 4 and h>self.zonaEscrituraAnchoMin and w>self.zonaEscrituraLargoMin and h<zonaEscrituraAnchoMax and w<zonaEscrituraLargoMax:
+                if len(approx) == 4 and h>self.zonaEscrituraAnchoMin and w>self.zonaEscrituraLargoMin and h<self.zonaEscrituraAnchoMax and w<self.zonaEscrituraLargoMax:
                     cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 3)
             cv2.imshow('IMAGEN', frame)
             cv2.imshow('HSV', tsv)
@@ -99,4 +99,8 @@ def main():
     print('Inicialización de la webcam')
     webCam = pizarra.inicializarWebcam()
     pizarra.detectarPizarra(webCam)
-    
+
+
+
+if __name__ == '__main__':
+    main()
